@@ -12,27 +12,27 @@ BungeePackets adds in one simple event to manage packets. PacketEvent. The packe
 In the example below, we are listening for an incoming packet coming from the client to the BungeeCord. We can check who is sending/receiving packets by checking if they are an instance of another connection. To check if the sender is a player, check if the sender is an instanceof a **ProxiedPlayer**. To check if the sender is Bungee, check if the sender is an instance of a **BungeeConnection**. To check if the sender is a server, check if the sender is an instanceof a **ServerConnection**.
 ```
 @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPacket(PacketEvent event) {
-        if (event.getSender() instanceof ProxiedPlayer &&
-                event.getReceiver() instanceof BungeeConnection) {
-            getLogger().info("Player Packet Received: " + event.getPacket().toString());
-        }
-
-        if (event.getReceiver() instanceof BungeeConnection &&
-                event.getSender() instanceof ServerConnection) {
-            getLogger().info("Server Packet Sent: " + event.getPacket().toString());
-        }
-
-        if (event.getSender() instanceof ServerConnection &&
-                event.getReceiver() instanceof BungeeConnection) {
-            getLogger().info("Server Packet Received: " + event.getPacket().toString());
-        }
-
-        if (event.getReceiver() instanceof BungeeConnection &&
-                event.getSender() instanceof ProxiedPlayer) {
-            getLogger().info("Player Packet Sent: " + event.getPacket().toString());
-        }
+public void onPacket(PacketEvent event) {
+    if (event.getSender() instanceof ProxiedPlayer &&
+            event.getReceiver() instanceof BungeeConnection) {
+        getLogger().info("Player Packet Received: " + event.getPacket().toString());
     }
+
+    if (event.getReceiver() instanceof BungeeConnection &&
+            event.getSender() instanceof ServerConnection) {
+        getLogger().info("Server Packet Sent: " + event.getPacket().toString());
+    }
+
+    if (event.getSender() instanceof ServerConnection &&
+            event.getReceiver() instanceof BungeeConnection) {
+        getLogger().info("Server Packet Received: " + event.getPacket().toString());
+    }
+
+    if (event.getReceiver() instanceof BungeeConnection &&
+            event.getSender() instanceof ProxiedPlayer) {
+        getLogger().info("Player Packet Sent: " + event.getPacket().toString());
+    }
+}
 ```
 With the code above, we will be able to detect the 4 possible situations. You can also filter for an specific and already declared packet in BungeeCord, for example, the KeepAlive packet:
 
