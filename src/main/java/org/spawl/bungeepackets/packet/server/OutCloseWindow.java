@@ -7,20 +7,20 @@ import org.spawl.bungeepackets.packet.StructurePacket;
 
 public class OutCloseWindow extends StructurePacket {
 
-	public int id;
-	
-	public OutCloseWindow(int id) {
-		this.id = id;
-	}
-	
-	@Override
-	public void read(ByteBuf buf, Direction direction, int protocolVersion) {
-		this.id = buf.readUnsignedByte();
-	}
+    public int id;
 
-	@Override
-	public void write(ByteBuf buf, Direction direction, int protocolVersion) {
-		buf.writeByte(id);
-	}
+    public OutCloseWindow(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public void read(ByteBuf buf, Direction direction, int protocolVersion) {
+        this.id = buf.readUnsignedByte();
+    }
+
+    @Override
+    public void write(ByteBuf buf, Direction direction, int protocolVersion) {
+        buf.writeByte(id);
+    }
 
 }

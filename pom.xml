@@ -11,7 +11,7 @@
 
     <!-- Change the bungee version here instead of having to find everywhere else.. -->
     <properties>
-        <bungee.version>1.8-SNAPSHOT</bungee.version>
+        <bungee.version>1.12-SNAPSHOT</bungee.version>
     </properties>
 
     <build>
